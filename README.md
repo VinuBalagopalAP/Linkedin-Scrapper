@@ -35,3 +35,4 @@
 ### API Documentation
 
 - POST `/api/generate-resume` - Generate resume from LinkedIn URL
+- Health `/health` - Health check endpoint
