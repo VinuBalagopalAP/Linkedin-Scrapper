@@ -2,10 +2,21 @@ const request = require("supertest");
 const app = require("../src/app");
 
 describe("Resume API", () => {
-  test("should generate resume", async () => {
-    const res = await request(app)
+  // Test authentication
+  test("should require authentication", async () => {
+    const response = await request(app).post("/api/generate-resume");
+    expect(response.status).toBe(401);
+  });
+
+  // Test resume generation
+  test("should generate resume with valid LinkedIn URL", async () => {
+    const response = await request(app)
       .post("/api/generate-resume")
-      .send({ url: "test-url" });
-    expect(res.status).toBe(200);
+      .set("Authorization", `Bearer ${validToken}`)
+      .send({
+        url: "https://linkedin.com/in/test-profile",
+      });
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty("firstName");
   });
 });
