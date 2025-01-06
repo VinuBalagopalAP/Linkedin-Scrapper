@@ -1,6 +1,7 @@
+// src/models.rs
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Profile {
     pub first_name: String,
     pub last_name: String,
@@ -10,7 +11,7 @@ pub struct Profile {
     pub skills: Vec<Skill>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Experience {
     pub id: i32,
     pub title: String,
@@ -20,7 +21,7 @@ pub struct Experience {
     pub work_summary: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Skill {
     pub id: i32,
     pub name: String,

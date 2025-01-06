@@ -1,3 +1,4 @@
+// src/cache.rs
 use crate::models::Profile;
 use moka::sync::Cache;
 use std::time::Duration;
@@ -11,7 +12,6 @@ impl ProfileCache {
         Self {
             cache: Cache::builder()
                 .time_to_live(Duration::from_secs(3600))
-                .max_capacity(1000)
                 .build(),
         }
     }

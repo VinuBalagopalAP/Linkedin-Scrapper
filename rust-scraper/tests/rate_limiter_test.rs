@@ -1,7 +1,6 @@
 // src/rate_limiter.rs
 use std::sync::Arc;
 use tokio::sync::Semaphore;
-use tokio::time::Duration;
 
 pub struct RateLimiter {
     semaphore: Arc<Semaphore>,
@@ -23,7 +22,7 @@ impl RateLimiter {
             .map_err(|_| "Rate limit exceeded".to_string())?;
 
         tokio::spawn(async move {
-            tokio::time::sleep(Duration::from_secs(60)).await;
+            tokio::time::sleep(tokio::time::Duration::from_millis(100)).await;
             drop(permit);
         });
 

@@ -7,9 +7,14 @@ edition = "2021"
 actix-web = "4.3"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-reqwest = { version = "0.12.12", features = ["json"] }
+reqwest = { version = "0.12.12", features = ["json"] }  # Updated version
 scraper = "0.22.0"
-tokio = { version = "1.32", features = ["full"] }
+tokio = { version = "1.32", features = ["full", "test-util"] }
 moka = { version = "0.12", features = ["sync"] }
 backoff = "0.4"
 rand = "0.8"
+env_logger = "0.11.6"
+
+[dev-dependencies]
+mockito = "1.2"
+tokio-test = "0.4"
