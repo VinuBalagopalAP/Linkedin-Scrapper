@@ -1,0 +1,15 @@
+[package]
+name = "rust-scraper"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = "4.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+reqwest = { version = "0.12.12", features = ["json"] }
+scraper = "0.22.0"
+tokio = { version = "1.32", features = ["full"] }
+moka = { version = "0.12", features = ["sync"] }
+backoff = "0.4"
+rand = "0.8"
