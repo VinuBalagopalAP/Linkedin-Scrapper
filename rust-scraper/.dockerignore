@@ -1,0 +1,4 @@
+# rust-scraper/.dockerignore
+target/
+Cargo.lock
+.env

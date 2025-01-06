@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  node-backend:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - RUST_SERVICE_URL=http://rust-scraper:8080
+    depends_on:
+      - rust-scraper
+
+  rust-scraper:
+    build:
+      context: ./rust-scraper
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+networks:
+  default:
+    driver: bridge
