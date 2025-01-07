@@ -1,7 +1,10 @@
 const { validationResult } = require("express-validator");
 
 exports.validateLinkedInUrl = [
-  body("url").isURL().contains("linkedin.com"),
+  body("url")
+    .isURL()
+    .contains("linkedin.com")
+    .withMessage("Must be a valid LinkedIn URL"),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
